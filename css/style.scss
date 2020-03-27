@@ -1,0 +1,336 @@
+/*Mixins and Essentials*/
+
+$sans: "Roboto", sans-serif;
+$text: rgb(109, 115, 129);
+$text-dark: rgb(68, 75, 83);
+$primary-color: #02aab0;
+$secondary-color: #00cdac;
+
+@mixin transition($time) {
+  -webkit-transition: all$time ease;
+  -moz-transition: all$time ease;
+  -o-transition: all$time ease;
+  transition: all$time ease;
+}
+
+@mixin smoothtransition($time) {
+  -webkit-transition: all$time cubic-bezier(0.43, 0.13, 0.15, 0.99);
+  -moz-transition: all$time cubic-bezier(0.43, 0.13, 0.15, 0.99);
+  -o-transition: all$time cubic-bezier(0.43, 0.13, 0.15, 0.99);
+  transition: all$time cubic-bezier(0.43, 0.13, 0.15, 0.99);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  height: 6px;
+  border: 3px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  -webkit-border-radius: 7px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/*Body*/
+
+body {
+  font-family: $sans;
+  margin: 0px;
+}
+
+header {
+  position: absolute;
+  top: 0px;
+  left: 10%;
+  width: 80%;
+  padding: 15px 0px;
+  margin: auto;
+  background: transparent;
+
+  .content {
+    height: 100%;
+    width: 90%;
+  }
+
+  .links {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    a {
+      margin: 10px;
+      height: auto;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.7);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 8px;
+      @include transition(0.25s);
+    }
+
+    a:hover,
+    a.current {
+      color: #fff;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 2px;
+    }
+  }
+}
+
+section {
+  position: relative;
+  width: 100%;
+  padding: 70px 0px;
+}
+
+section.fix-bottom {
+  padding-bottom: 35px;
+}
+
+section.fix-top {
+  padding-top: 35px;
+}
+
+@keyframes scroll {
+  0% {
+    top: 5px;
+    opacity: 1;
+  }
+
+  95% {
+    top: 12px;
+    opacity: 0.5;
+  }
+}
+
+section.intro {
+  position: relative;
+  padding: 140px 0px;
+  background: linear-gradient(-45deg, $primary-color, $secondary-color);
+
+  .photo-id {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    background-image: url("../img/Renuka Thukral Photo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 20px auto;
+  }
+
+  h1 {
+    color: #fff;
+    margin: 10px 0px;
+    text-align: center;
+  }
+
+  h6 {
+    color: rgba(255, 255, 255, 0.75);
+    margin: 10px 0px;
+    text-align: center;
+    font-size: 1.25em;
+  }
+
+  .scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 22px;
+    width: 12px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+  }
+
+  .scroll:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 4px;
+    width: 4px;
+    opacity: 1;
+    border-radius: 100%;
+    background: #fff;
+    animation: scroll 1.5s infinite;
+  }
+}
+
+.content {
+  width: 70%;
+  margin: auto;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 4em;
+  color: $text-dark;
+  margin: 10px 0px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 3.5em;
+  color: $text-dark;
+  margin: 10px 0px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 2.5em;
+  color: $text-dark;
+  margin: 10px 0px;
+}
+
+h4 {
+  font-weight: 400;
+  font-size: 2em;
+  color: $text-dark;
+  margin: 10px 0px;
+}
+
+h5 {
+  font-weight: 400;
+  font-size: 1.5em;
+  color: $text-dark;
+  margin: 10px 0px;
+}
+
+h6 {
+  font-weight: 400;
+  font-size: 1.25em;
+  color: $text-dark;
+  margin: 10px 0px;
+}
+
+p {
+  line-height: 1.75;
+  font-size: 1.2em;
+  color: $text;
+  margin: 10px 0px;
+}
+
+button {
+  position: relative;
+  border: none;
+  outline: none;
+  padding: 15px 25px;
+  color: #fff;
+  background: $primary-color;
+  font-size: 1em;
+  font-weight: 500;
+  margin: 10px 0px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 0;
+  border-radius: 2px;
+  @include transition(0.25s);
+}
+
+button.center {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: $secondary-color;
+  z-index: -1;
+  @include transition(0.25s);
+}
+
+button:hover:before {
+  top: 0;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 20px 25px #40798c31;
+}
+
+button.center:hover {
+  transform: translate(-50%, 0) scale(1.05);
+  box-shadow: 0px 20px 25px #40798c31;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px 0px;
+
+  .image-wrapper {
+    height: 200px;
+    width: calc(33.33% - 20px);
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    @include transition(0.25s);
+
+    img {
+      position: absolute;
+      max-height: 100%;
+      min-width: 100%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .image-wrapper:hover {
+    transform: scale(1.075);
+    box-shadow: 0px 5px 40px #40798c3f;
+  }
+}
+
+.image-viewer {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.75);
+
+  img {
+    max-height: 80vh;
+    max-width: 80vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    height: 24px;
+    width: 24px;
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+footer {
+  padding: 40px 0px;
+  background: #f7f7f7;
+}
