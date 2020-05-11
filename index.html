@@ -11,22 +11,23 @@
       crossorigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Roboto:100,300,300i,400,400i,500,500i,700,700i,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Gotu&family=Sen:wght@400;700;800&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <section class="intro">
-      <header>
-        <div class="content">
-          <div class="links">
-            <a href="" class="current">Home</a>
-            <a href="">About</a>
-            <a href="">Workshops</a>
-            <a href="">Contact</a>
-          </div>
+    <header>
+      <div class="content">
+        <div class="name">Renuka Thukral</div>
+        <div class="links">
+          <a href="/" class="current">Home</a>
+          <a href="/about">About</a>
+          <a href="/workshops">Workshops</a>
+          <a href="/contact">Contact</a>
         </div>
-      </header>
+      </div>
+    </header>
+    <section class="intro landing-bg">
       <div class="content">
         <div class="photo-id"></div>
         <h1>Renuka Thukral</h1>
@@ -48,12 +49,15 @@
           <b>over 60 prominent schools</b> across India for teachers teaching
           pre-primary and primary classes.
         </p>
-        <button>Read More</button>
+        <a href="/about/"
+          ><button>Read More <i class="fas fa-arrow-right"></i></button
+        ></a>
       </div>
     </section>
     <section class="fix-top">
       <div class="content">
-        <h3>Recents</h3>
+        <h3>Recent Glimpses</h3>
+        <p></p>
         <div class="gallery">
           <div class="image-wrapper">
             <img src="img/Selected/IMG_20190714_175931.jpg" />
@@ -74,15 +78,24 @@
             <img src="img/Selected/IMG_20200119_143735.jpg" />
           </div>
         </div>
-        <button class="center">View More</button>
+        <a href="/workshops/"
+          ><button class="center">
+            View More <i class="fas fa-arrow-right"></i></button
+        ></a>
       </div>
     </section>
-    <footer></footer>
+    <footer>
+      <div class="content">
+        <div class="socials">
+          <a><i class="fas fa-envelope"></i></a>
+          <a><i class="fab fa-linkedin-in"></i></a>
+          <a><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <p class="sm center">&copy; Renuka Thukral &middot; 2020</p>
+      </div>
+    </footer>
     <div class="image-viewer">
       <img src="img/Selected/IMG_20200119_143735.jpg" />
-      <div class="close">
-        <i class="fas fa-times"></i>
-      </div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"

@@ -1,10 +1,11 @@
 /*Mixins and Essentials*/
 
-$sans: "Roboto", sans-serif;
+$primary-font: "Gotu", sans-serif;
+$secondary-font: "Sen", sans-serif;
 $text: rgb(109, 115, 129);
 $text-dark: rgb(68, 75, 83);
-$primary-color: #02aab0;
-$secondary-color: #00cdac;
+$primary-color: #ed4c67;
+$secondary-color: #7ed6df;
 
 @mixin transition($time) {
   -webkit-transition: all$time ease;
@@ -43,22 +44,33 @@ $secondary-color: #00cdac;
 /*Body*/
 
 body {
-  font-family: $sans;
+  font-family: $secondary-font;
   margin: 0px;
 }
 
 header {
-  position: absolute;
+  position: fixed;
   top: 0px;
-  left: 10%;
-  width: 80%;
+  left: 0;
+  width: 100%;
   padding: 15px 0px;
   margin: auto;
-  background: transparent;
+  background: #fff;
+  z-index: 1000000;
+  box-shadow: 0 0 20px rgba(15, 22, 46, 0.05);
 
   .content {
     height: 100%;
-    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .name {
+    font-size: 1.25em;
+    color: $text-dark;
+    font-weight: 600;
   }
 
   .links {
@@ -68,20 +80,25 @@ header {
     align-items: flex-start;
 
     a {
-      margin: 10px;
+      margin: 10px 15px;
       height: auto;
       text-decoration: none;
-      color: rgba(255, 255, 255, 0.7);
-      border-bottom: 1px solid transparent;
-      padding-bottom: 8px;
+      color: $text;
+      font-size: 0.9em;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
       @include transition(0.25s);
+    }
+
+    a:last-of-type {
+      margin-right: 0;
     }
 
     a:hover,
     a.current {
-      color: #fff;
-      border-bottom: 1px solid #fff;
-      padding-bottom: 2px;
+      color: $primary-color;
+      border-bottom: 2px solid $primary-color;
     }
   }
 }
@@ -90,6 +107,7 @@ section {
   position: relative;
   width: 100%;
   padding: 70px 0px;
+  z-index: 1;
 }
 
 section.fix-bottom {
@@ -112,32 +130,108 @@ section.fix-top {
   }
 }
 
+section.landing-bg {
+  position: relative;
+  background-color: #eee;
+  background-image: url("../img/Back\ \(1\).jpg");
+  background-size: cover;
+  background-position: center center;
+  z-index: 0;
+}
+
+section.about-bg {
+  position: relative;
+  background-color: #eee;
+  background-image: url("../img/Back\ \(2\).jpg");
+  background-size: cover;
+  background-position: center center;
+  z-index: 0;
+}
+
+section.contact-bg {
+  position: relative;
+  background-color: #eee;
+  background-image: url("../img/Back\ \(4\).jpg");
+  background-size: cover;
+  background-position: center center;
+  z-index: 0;
+}
+
+section.workshops-bg {
+  position: relative;
+  background-color: #eee;
+  background-image: url("../img/Back\ \(3\).jpg");
+  background-size: cover;
+  background-position: center center;
+  z-index: 0;
+
+  h1,
+  h6 {
+    color: #fff !important;
+  }
+
+  .scroll {
+    border: 2px solid #fff !important;
+  }
+
+  .scroll:before {
+    background: #fff !important;
+  }
+}
+
+section.workshops-bg:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgba(10, 16, 43, 0.4);
+  z-index: -1;
+}
+
+section.landing-bg:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+
 section.intro {
   position: relative;
-  padding: 140px 0px;
-  background: linear-gradient(-45deg, $primary-color, $secondary-color);
+  padding: 150px 0px;
+  padding-top: 175px;
 
   .photo-id {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     border-radius: 100%;
     background-image: url("../img/Renuka Thukral Photo.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     margin: 20px auto;
+    box-shadow: 0 0 0 0.5rem rgba(0, 0, 0, 0.025);
   }
 
   h1 {
-    color: #fff;
     margin: 10px 0px;
+    font-weight: 500;
     text-align: center;
+    line-height: 1;
+    color: $text-dark;
   }
 
   h6 {
-    color: rgba(255, 255, 255, 0.75);
+    color: $text-dark;
     margin: 10px 0px;
     text-align: center;
-    font-size: 1.25em;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1;
   }
 
   .scroll {
@@ -148,7 +242,7 @@ section.intro {
     height: 22px;
     width: 12px;
     border-radius: 10px;
-    border: 2px solid #fff;
+    border: 2px solid rgba(15, 22, 46, 0.25);
   }
 
   .scroll:before {
@@ -161,7 +255,7 @@ section.intro {
     width: 4px;
     opacity: 1;
     border-radius: 100%;
-    background: #fff;
+    background: rgba(15, 22, 46, 0.25);
     animation: scroll 1.5s infinite;
   }
 }
@@ -172,45 +266,50 @@ section.intro {
 }
 
 h1 {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 4em;
   color: $text-dark;
   margin: 10px 0px;
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 3.5em;
   color: $text-dark;
   margin: 10px 0px;
 }
 
 h3 {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 2.5em;
   color: $text-dark;
   margin: 10px 0px;
 }
 
 h4 {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 2em;
   color: $text-dark;
   margin: 10px 0px;
 }
 
 h5 {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.5em;
   color: $text-dark;
   margin: 10px 0px;
 }
 
 h6 {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.25em;
   color: $text-dark;
   margin: 10px 0px;
+}
+
+hr {
+  width: 70%;
+  border: 1px solid rgba(15, 22, 46, 0.05);
 }
 
 p {
@@ -218,6 +317,15 @@ p {
   font-size: 1.2em;
   color: $text;
   margin: 10px 0px;
+  text-align: justify;
+}
+
+.center {
+  text-align: center;
+}
+
+.sm {
+  font-size: 0.8em;
 }
 
 button {
@@ -235,6 +343,10 @@ button {
   z-index: 0;
   border-radius: 2px;
   @include transition(0.25s);
+
+  .fas {
+    margin-left: 5px;
+  }
 }
 
 button.center {
@@ -250,7 +362,7 @@ button:before {
   left: 0%;
   width: 100%;
   height: 100%;
-  background: $secondary-color;
+  background: rgba(15, 22, 46, 0.1);
   z-index: -1;
   @include transition(0.25s);
 }
@@ -282,7 +394,7 @@ button.center:hover {
     margin: 10px;
     position: relative;
     cursor: pointer;
-    @include transition(0.25s);
+    @include transition(0.3s);
 
     img {
       position: absolute;
@@ -295,8 +407,7 @@ button.center:hover {
   }
 
   .image-wrapper:hover {
-    transform: scale(1.075);
-    box-shadow: 0px 5px 40px #40798c3f;
+    box-shadow: 0px 0px 0px 0.4rem $secondary-color;
   }
 }
 
@@ -308,6 +419,8 @@ button.center:hover {
   left: 0;
   display: none;
   background: rgba(0, 0, 0, 0.75);
+  z-index: 1000001;
+  backdrop-filter: blur(5px);
 
   img {
     max-height: 80vh;
@@ -333,4 +446,70 @@ button.center:hover {
 footer {
   padding: 40px 0px;
   background: #f7f7f7;
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    a {
+      padding: 10px;
+      margin: 10px;
+      color: $text;
+      font-size: 1.5rem;
+      cursor: pointer;
+      @include transition(0.25s);
+    }
+
+    a:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2.5em;
+  }
+  h3 {
+    font-size: 2.25em;
+  }
+  h4 {
+    font-size: 1.75em;
+  }
+  h5 {
+    font-size: 1.25em;
+  }
+  h6 {
+    font-size: 1em;
+  }
+  p {
+    font-size: 0.9em;
+  }
+  header {
+    .name {
+      font-size: 0.9em;
+      line-height: 1;
+    }
+
+    .links a {
+      margin: 8px;
+      font-size: 0.8em;
+    }
+  }
+  .content {
+    width: 90%;
+  }
+
+  .gallery {
+    .image-wrapper {
+      width: calc(50% - 10px);
+      margin: 5px;
+      height: 150px;
+    }
+  }
 }
